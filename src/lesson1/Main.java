@@ -1,10 +1,12 @@
 package lesson1;
 
-/**
- * Created by SERGE on 05.03.14.
- */
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
 public class Main {
-    public static  void main(String[] args) throws CloneNotSupportedException {
+    public static  void main(String[] args) {
         /*
 
     Написать класс «человек». Реализовать его методы clone, equals, hashCode.
@@ -13,11 +15,24 @@ public class Main {
     * Написать проект «Виртуальная файловая система». Каждый каталог и файл представлен одним объектом; вся файловая структура хранится в одном файле.
 
          */
-        Human human1 = new Human("Name", 100);
-        Human human2 = human1.clone();
-        human2.name = "Other";
-        System.out.println(human1);
-        System.out.println(human2);
+        try (BufferedReader reader = new BufferedReader(
+                                        new InputStreamReader(
+                                                System.in))) {
+            Human[] humans = new Human[2];
 
+            for (int i = 0; i < humans.length; i++){
+                humans[i] = new Human();
+                System.out.print("Name: ");
+                humans[i].name = reader.readLine();
+                System.out.print("Age: ");
+                humans[i].age = Integer.parseInt(reader.readLine());
+            }
+
+            for (Human human: humans){
+                System.out.println(human);
+            }
+        } catch (IOException e) {
+            System.out.println("Wrong argument!");
+        }
     }
 }
