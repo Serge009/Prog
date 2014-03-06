@@ -2,13 +2,27 @@ package lesson1;
 
 import java.io.Serializable;
 
-/**
- * Created by SERGE on 05.03.14.
- */
+
 public class Human implements Serializable, Cloneable {
     public String name;
 
     public int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     Human(String name, int age){
         this.name = name;
